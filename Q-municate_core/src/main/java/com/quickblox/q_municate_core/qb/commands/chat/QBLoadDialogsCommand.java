@@ -65,6 +65,9 @@ public class QBLoadDialogsCommand extends ServiceCommand {
         parcelableQBDialog.addAll(ChatUtils.qbDialogsToParcelableQBDialogs(
                 loadAllDialogsByType(QBDialogType.GROUP, returnedBundle, qbRequestGetBuilder)));
 
+        parcelableQBDialog.addAll(ChatUtils.qbDialogsToParcelableQBDialogs(
+                loadAllDialogsByType(QBDialogType.PUBLIC_GROUP, returnedBundle, qbRequestGetBuilder)));
+
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(QBServiceConsts.EXTRA_CHATS_DIALOGS, parcelableQBDialog);
 

@@ -114,10 +114,9 @@ public class Dialog implements Serializable {
     }
 
     public enum Type {
-
-        PRIVATE(0),
-        GROUP(1);
-
+        PUBLIC_GROUP(1),
+        GROUP(2),
+        PRIVATE(3);
         private int code;
 
         Type(int code) {

@@ -520,13 +520,19 @@ public abstract class BaseDialogActivity extends BaseLoggableActivity implements
         } catch (QBResponseException e) {
             ErrorUtils.showError(this, e);
             error = true;
+            Log.e("sendMessage", "exception", e);
+
         } catch (IllegalStateException e) {
             ErrorUtils.showError(this, this.getString(
                     com.quickblox.q_municate_core.R.string.dlg_not_joined_room));
             error = true;
+            Log.e("sendMessage", "exception", e);
+
         } catch (Exception e) {
             ErrorUtils.showError(this, e);
             error = true;
+            Log.e("sendMessage", "exception", e);
+
         }
 
         if (!error) {

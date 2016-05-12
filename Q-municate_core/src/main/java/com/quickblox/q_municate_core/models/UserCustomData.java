@@ -9,10 +9,12 @@ public class UserCustomData implements Serializable {
     public static String TAG_AVATAR_URL = "avatar_url";
     public static String TAG_STATUS = "status";
     public static String TAG_IS_IMPORT = "is_import";
+    public static String TAG_SUBSCRIPTION = "subscription";
 
     private String avatar_url;
     private String status;
     private String is_import;
+    private String subscription;
 
     public UserCustomData() {
         avatar_url = ConstsCore.EMPTY_STRING;
@@ -47,5 +49,12 @@ public class UserCustomData implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getSubscription() {
+        return subscription;
+    }
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 }

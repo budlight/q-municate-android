@@ -20,6 +20,7 @@ import com.quickblox.core.exception.QBResponseException;
 import com.quickblox.q_municate.R;
 import com.quickblox.q_municate.ui.activities.about.AboutActivity;
 import com.quickblox.q_municate.ui.activities.chats.NewMessageActivity;
+import com.quickblox.q_municate.ui.activities.chats.PublicGroupDialogActivity;
 import com.quickblox.q_municate_core.core.loader.BaseLoader;
 import com.quickblox.q_municate.ui.activities.chats.GroupDialogActivity;
 import com.quickblox.q_municate.ui.activities.chats.PrivateDialogActivity;
@@ -202,6 +203,9 @@ public class DialogsListFragment extends BaseLoaderFragment<List<Dialog>> {
 
         if (dialog.getType() == Dialog.Type.PRIVATE) {
             startPrivateChatActivity(dialog);
+        } else if (dialog.getType() == Dialog.Type.PUBLIC_GROUP) {
+            startPublicGroupChatActivity(dialog);
+
         } else {
             startGroupChatActivity(dialog);
         }
@@ -268,6 +272,10 @@ public class DialogsListFragment extends BaseLoaderFragment<List<Dialog>> {
 
     private void startGroupChatActivity(Dialog dialog) {
         GroupDialogActivity.start(baseActivity, dialog);
+    }
+
+    private void startPublicGroupChatActivity(Dialog dialog) {
+        PublicGroupDialogActivity.start(baseActivity, dialog);
     }
 
     private void updateDialogsList() {

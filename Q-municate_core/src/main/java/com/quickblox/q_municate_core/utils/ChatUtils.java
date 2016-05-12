@@ -188,6 +188,8 @@ public class ChatUtils {
 
         if (QBDialogType.PRIVATE.equals(qbDialog.getType())) {
             dialog.setType(Dialog.Type.PRIVATE);
+        } else if (QBDialogType.PUBLIC_GROUP.equals(qbDialog.getType())){
+            dialog.setType(Dialog.Type.PUBLIC_GROUP);
         } else if (QBDialogType.GROUP.equals(qbDialog.getType())){
             dialog.setType(Dialog.Type.GROUP);
         }

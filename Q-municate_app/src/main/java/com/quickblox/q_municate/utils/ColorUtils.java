@@ -2,6 +2,8 @@ package com.quickblox.q_municate.utils;
 
 import android.graphics.Color;
 
+import com.quickblox.q_municate_db.models.User;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -25,6 +27,22 @@ public class ColorUtils {
             int colorValue = getRandomColor();
             colorsMap.put(senderId, colorValue);
             return colorsMap.get(senderId);
+        }
+    }
+
+    public int getColorByUser(User user) {
+        if (colorsMap.get(user.getUserId()) != null) {
+            return colorsMap.get(user.getUserId());
+        } else {
+            int colorValue = Color.parseColor("#000000");
+             if (user.getSubscription() == "premium") {
+                 colorValue = Color.parseColor("#34B809");
+
+            } else if (user.getSubscription() == "vip") {
+                colorValue = Color.parseColor("#34B809");
+            }
+            colorsMap.put(user.getUserId(), colorValue);
+            return colorsMap.get(user.getUserId());
         }
     }
 

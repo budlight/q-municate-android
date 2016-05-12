@@ -37,6 +37,7 @@ import com.quickblox.q_municate.ui.activities.authorization.SplashActivity;
 import com.quickblox.q_municate.ui.activities.call.CallActivity;
 import com.quickblox.q_municate.ui.activities.chats.GroupDialogActivity;
 import com.quickblox.q_municate.ui.activities.chats.PrivateDialogActivity;
+import com.quickblox.q_municate.ui.activities.chats.PublicGroupDialogActivity;
 import com.quickblox.q_municate.ui.fragments.dialogs.base.ProgressDialogFragment;
 import com.quickblox.q_municate.utils.ToastUtils;
 import com.quickblox.q_municate.utils.bridges.ActionBarBridge;
@@ -607,6 +608,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ActionBa
             if (dialog != null && user != null) {
                 if (Dialog.Type.PRIVATE.equals(dialog.getType())) {
                     startPrivateChatActivity(user, dialog);
+                }else if (Dialog.Type.PUBLIC_GROUP.equals(dialog.getType())) {
+                    startPublicGroupChatActivity(dialog);
                 } else {
                     startGroupChatActivity(dialog);
                 }
@@ -633,7 +636,11 @@ public abstract class BaseActivity extends AppCompatActivity implements ActionBa
     }
 
     public void startGroupChatActivity(Dialog dialog) {
+        Log.e("BASE", "GROUP");
         GroupDialogActivity.start(this, dialog);
+    }
+    public void startPublicGroupChatActivity(Dialog dialog) {
+        PublicGroupDialogActivity.start(this, dialog);
     }
 
     protected void startLandingScreen() {

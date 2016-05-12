@@ -15,6 +15,7 @@ import static com.quickblox.q_municate_db.models.User.Column.PHONE;
 import static com.quickblox.q_municate_db.models.User.Column.ROLE;
 import static com.quickblox.q_municate_db.models.User.Column.STATUS;
 import static com.quickblox.q_municate_db.models.User.Column.TABLE_NAME;
+import static com.quickblox.q_municate_db.models.User.Column.SUBSCRIPTION;
 
 @DatabaseTable(tableName = TABLE_NAME)
 public class User implements Serializable {
@@ -63,6 +64,10 @@ public class User implements Serializable {
     @DatabaseField(
             columnName = LAST_LOGIN)
     private long lastLogin;
+
+    @DatabaseField(
+            columnName = SUBSCRIPTION)
+    private String subscription;
 
     public User() {
     }
@@ -161,6 +166,13 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public String getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
+    }
     public Social getSocial() {
         return social;
     }
@@ -224,5 +236,7 @@ public class User implements Serializable {
         String STATUS = "status";
         String ROLE = "role";
         String LAST_LOGIN = "last_login";
+        String SUBSCRIPTION = "subscription";
+
     }
 }

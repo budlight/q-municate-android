@@ -8,6 +8,8 @@ import android.view.View;
 import com.quickblox.q_municate.R;
 import com.quickblox.q_municate.ui.activities.base.BaseActivity;
 import com.quickblox.q_municate.ui.activities.chats.BaseDialogActivity;
+import com.quickblox.q_municate.ui.activities.chats.PublicGroupDialogActivity;
+import com.quickblox.q_municate.utils.DeviceInfoUtils;
 import com.quickblox.q_municate_core.service.QBServiceConsts;
 import com.quickblox.q_municate_db.managers.DataManager;
 import com.quickblox.q_municate_db.models.Dialog;
@@ -81,6 +83,10 @@ public class ActivityUIHelper {
 
         if (isPrivateMessage) {
             baseActivity.startPrivateChatActivity(senderUser, messagesDialog);
+        } else if (messagesDialog.getType() == Dialog.Type.PUBLIC_GROUP) {
+            baseActivity.startPublicGroupChatActivity(messagesDialog);
+
+
         } else {
             baseActivity.startGroupChatActivity(messagesDialog);
         }

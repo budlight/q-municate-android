@@ -55,6 +55,8 @@ public class UserFriendUtils {
         if (userCustomData != null) {
             user.setAvatar(userCustomData.getAvatar_url());
             user.setStatus(userCustomData.getStatus());
+            user.setSubscription(userCustomData.getSubscription());
+
         }
 
         return user;

@@ -120,7 +120,11 @@ public class QBGroupChatHelper extends QBBaseChatHelper {
         addNecessaryPropertyForQBChatMessage(chatMessage, dialogId);
 
         try {
-            groupChat.sendMessage(chatMessage);
+            if (currentDialog.getType() == QBDialogType.PUBLIC_GROUP) {
+                groupChat.sendMessageWithoutJoin(chatMessage);
+            } else {
+                groupChat.sendMessage(chatMessage);
+            }
         } catch (XMPPException e) {
             error = context.getString(R.string.dlg_fail_send_msg);
         } catch (SmackException.NotConnectedException e) {
@@ -266,6 +270,7 @@ public class QBGroupChatHelper extends QBBaseChatHelper {
         try {
             joinRoomChat(dialog);
         } catch (Exception e) {
+            Log.e("tryJoinRoomChat", "exception", e);
             ErrorUtils.logError(e);
         }
     }
